@@ -1,15 +1,3 @@
-var faker = require('faker');
-var email = faker.internet.email();
-var telefon = faker.random.number({min: 100000000, max: 999999999});
-var nazwisko = faker.name.lastName();
-var imie = faker.name.firstName();
-var ulica = faker.address.streetName();
-var numerdomu = faker.random.number({min: 1, max: 200});
-var numermieszkania = faker.random.number({min: 1, max: 99});
-var miejscowosc = faker.address.city();;
-var kodpocztowy = faker.address.zipCode();
-var haslo =faker.internet.password() ;
-var haslo2 = haslo;
 
 
 require('chromedriver');
@@ -23,6 +11,19 @@ describe('Rejestracja', function () {
 
     it('rejestracja', async function() {
 
+       var faker = require('faker');
+        var email = faker.internet.email();
+        var telefon = faker.random.number({min: 100000000, max: 999999999});
+        var nazwisko = faker.name.lastName();
+        var imie = faker.name.firstName();
+        var ulica = faker.address.streetName();
+        var numerdomu = faker.random.number({min: 1, max: 200});
+        var numermieszkania = faker.random.number({min: 1, max: 99});
+        var miejscowosc = faker.address.city();;
+        var kodpocztowy = faker.address.zipCode();
+        var haslo =faker.internet.password() ;
+        var haslo2 = haslo;
+        
         await driver.get('https://czytam.pl/');
         driver.manage().window().maximize();
 
