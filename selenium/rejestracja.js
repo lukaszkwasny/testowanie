@@ -11,7 +11,8 @@ describe('Rejestracja', function () {
 
     it('rejestracja', async function() {
 
-       var faker = require('faker');
+        var types = require('./types.js');
+        var faker = require('faker');
         var email = faker.internet.email();
         var telefon = faker.random.number({min: 100000000, max: 999999999});
         var nazwisko = faker.name.lastName();
@@ -30,25 +31,28 @@ describe('Rejestracja', function () {
 
         await driver.findElement(By.className('link-registered')).click();
 
-        await driver.findElement(By.id('nazwisko1')).sendKeys(nazwisko, Key.RETURN);
-
-        await driver.findElement(By.id('imie1')).sendKeys(imie, Key.RETURN);
-        await driver.findElement(By.id('telefon1')).sendKeys(telefon, Key.RETURN);
-        await driver.findElement(By.id('ulica1')).sendKeys(ulica, Key.RETURN);
-        await driver.findElement(By.id('nr_domu1')).sendKeys(numerdomu, Key.RETURN);
-        await driver.findElement(By.id('nr_mieszkania1')).sendKeys(numermieszkania, Key.RETURN);
-        await driver.findElement(By.id('miejscowosc1')).sendKeys(miejscowosc, Key.RETURN);
-        await driver.findElement(By.id('kod_pocztowy1')).sendKeys(kodpocztowy, Key.RETURN);
+        await driver.findElement(By.id(types.NAME_INPUT)).sendKeys(imie, Key.RETURN);
+        await driver.findElement(By.id(types.LASTNAME_INPUT)).sendKeys(nazwisko, Key.RETURN);
+        await driver.findElement(By.id(types.PHONE_INPUT)).sendKeys(telefon, Key.RETURN);
+        await driver.findElement(By.id(types.STREET_INPUT)).sendKeys(ulica, Key.RETURN);
+        await driver.findElement(By.id(types.HOUSE_NUMBER_INPUT)).sendKeys(numerdomu, Key.RETURN);
+        await driver.findElement(By.id(types.APARTMENS_NUMBER_INPUT)).sendKeys(numermieszkania, Key.RETURN);
+        await driver.findElement(By.id(types.LOCALITY_INPUT)).sendKeys(miejscowosc, Key.RETURN);
+        await driver.findElement(By.id(types.ZIPCODE_INPUT)).sendKeys(kodpocztowy, Key.RETURN);
+        
         await driver.findElement(By.id('uniform-przenies')).click();
-        await driver.findElement(By.id('em1')).sendKeys(email, Key.RETURN);
-        await driver.findElement(By.id('haslo11')).sendKeys(haslo, Key.RETURN);
-        await driver.findElement(By.id('haslo21')).sendKeys(haslo2, Key.RETURN);
-        await driver.findElement(By.id('zgoda')).click();
+        await driver.findElement(By.id(types.EMAIL_INPUT)).sendKeys(email, Key.RETURN);
+        await driver.findElement(By.id(types.PASSWORD1_INPUT)).sendKeys(haslo, Key.RETURN);
+        await driver.findElement(By.id(types.PASSWORD2_INPUT)).sendKeys(haslo2, Key.RETURN);
+        await driver.findElement(By.id(types.AGREEMENT_INPUT)).click();
         await driver.findElement(By.id('uniform-newsletter')).click();
-        await driver.findElement(By.css("[class='submit-next']")).click();;
+        await driver.findElement(By.css("[class='submit-next']")).click();
 
         await driver.wait(until.elementLocated(By.css("[class='submit-next']")), 10000);
         await driver.findElement(By.css("[class='submit-next']")).click();
+       await driver.findElement(By.xpath("//div[contains(@class,'alert-box medium-offset-1 success')]"));
+    
+        
 
     });
 
