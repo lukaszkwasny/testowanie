@@ -15,3 +15,4 @@ var NEWSLETTER_INPUT = exports.NEWSLETTER_INPUT = 'uniform-newsletter';
 var AGREEMENT_INPUT = exports.AGREEMENT_INPUT = 'zgoda';
 var LOCALITY_INPUT = exports.LOCALITY_INPUT = 'miejscowosc1';
 var EMAIL_INPUT = exports.EMAIL_INPUT = 'em1';
+ 
