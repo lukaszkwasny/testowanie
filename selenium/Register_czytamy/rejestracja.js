@@ -31,8 +31,8 @@ describe('Rejestracja', function () {
         await driver.findElement(By.id(types.LOCALITY_INPUT)).sendKeys(faker.address.city(), Key.RETURN);
         await driver.findElement(By.id(types.ZIPCODE_INPUT)).sendKeys(faker.address.zipCode(), Key.RETURN);
         await driver.findElement(By.id('uniform-przenies')).click();
-        var PASSWORD = faker.internet.password()
         await driver.findElement(By.id(types.EMAIL_INPUT)).sendKeys(faker.internet.email(), Key.RETURN);
+        var PASSWORD = faker.internet.password()
         await driver.findElement(By.id(types.PASSWORD1_INPUT)).sendKeys(PASSWORD, Key.RETURN);
         await driver.findElement(By.id(types.PASSWORD2_INPUT)).sendKeys(PASSWORD, Key.RETURN);
         await driver.findElement(By.id(types.AGREEMENT_INPUT)).click();
