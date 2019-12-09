@@ -31,9 +31,9 @@ describe('sklep', function () {
         await driver.findElement(By.xpath("//button[@name='processCarrier']//span[contains(text(),'Proceed to checkout')]")).click();
         await driver.findElement(By.xpath("//a[@class='bankwire']//span[contains(text(),'(order processing will be longer)')]")).click();
         await driver.findElement(By.xpath("//span[contains(text(),'I confirm my order')]")).click();
-        await driver.sleep(5000);
+        await driver.sleep(2000);
         await driver.findElement(By.xpath("//div[@class='box']")).getAttribute("Your order on My Store is complete.");
-
+        await driver.sleep(2000);
 
     });
 
