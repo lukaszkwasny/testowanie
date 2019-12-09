@@ -33,7 +33,7 @@ describe('sklep', function () {
         await driver.findElement(By.xpath("//span[contains(text(),'I confirm my order')]")).click();
         await driver.sleep(2000);
         await driver.findElement(By.xpath("//div[@class='box']")).getAttribute("Your order on My Store is complete.");
-        await driver.sleep(2000);
+        await driver.sleep(3000);
 
     });
 
