@@ -11,17 +11,19 @@ describe('sklep', function () {
 
     it('sklep', async function () {
 
-
-        await driver.get('http://automationpractice.com/index.php');
+        var pageurl = "http://automationpractice.com/index.php";
+        await driver.get(pageurl);
         driver.manage().window().maximize();
-
+        assert(URL = pageurl);
         await driver.findElement(By.xpath("//input[@id='search_query_top']")).sendKeys("Printed Chiffon Dress", Key.ENTER);
         await driver.findElement(By.xpath("//div[@class='right-block']//a[@class='product-name'][contains(text(),'Printed Chiffon Dress')]")).click();
         await driver.findElement((By.xpath("//button[@name='Submit']"))).click();
-        await driver.sleep(2000);
-        await driver.findElement((By.xpath("//span[contains(text(),'Proceed to checkout')]"))).click();
-        await driver.findElement((By.xpath(" //a[@class='button btn btn-default standard-checkout button-medium']//span[contains(text(),'Proceed to checkout')]"))).click();
-        await driver.sleep(2000);
+        await driver.findElement(By.xpath("//div[3]/div/p/button/span")).click();
+        await driver.sleep(1000);
+        await driver.findElement(By.className("btn btn-default button button-medium")).click();
+
+
+        await driver.findElement(By.xpath("//a[@class='button btn btn-default standard-checkout button-medium']")).click();
         await driver.findElement(By.xpath(types.EMAIL_INPUT)).sendKeys("buleczka_94@o2.pl");
         await driver.findElement(By.xpath(types.PASSWORD1_INPUT)).sendKeys("taktak");
         await driver.findElement(By.xpath("//p[@class='submit']//span[1]")).click();
@@ -31,8 +33,8 @@ describe('sklep', function () {
         await driver.findElement(By.xpath("//button[@name='processCarrier']//span[contains(text(),'Proceed to checkout')]")).click();
         await driver.findElement(By.xpath("//a[@class='bankwire']//span[contains(text(),'(order processing will be longer)')]")).click();
         await driver.findElement(By.xpath("//span[contains(text(),'I confirm my order')]")).click();
-        await driver.sleep(2000);
-        await driver.findElement(By.xpath("//div[@class='box']")).getAttribute("Your order on My Store is complete.");
+
+
         await driver.sleep(3000);
 
     });
